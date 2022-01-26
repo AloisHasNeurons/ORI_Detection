@@ -1,5 +1,6 @@
-file = open("sequence/seq_TD1.txt", "r")
-file_write = open("sortie/seq_TD1_sortie.txt", "w")
+file = open("Demarche scientifique/seq_TD1_test.txt", "r")
+file_write = open("Demarche scientifique/seq_TD1_sortie.txt", "w")
+sans_espace = open("Demarche scientifique/seq_TD1_sans_espace.txt", "w")
 seq = file.readlines()
 adn = True
 taille = int(input("Entrer la taille de la fenetre"))
@@ -8,9 +9,15 @@ for line in seq:
     ligne = ligne + 1
 chaine = ''.join([str(elem)for elem in seq[1:ligne+1]])
 for i in chaine:
-    if i not in "atgcn\n":
+    if i not in "atgc\n":
         adn = False
         break
+seq = file.read()
+newseq = chaine.replace("\n", "")
+file.close()
+file = open("Demarche scientifique/seq_TD1_sans_espace.txt", "w")
+file.write(newseq)
+file.close()
 if (adn == True):
     print("Valide")
     for i in (range(1,len(chaine),taille)):
