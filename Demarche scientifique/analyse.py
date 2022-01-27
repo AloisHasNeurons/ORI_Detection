@@ -18,9 +18,12 @@ file.close()
 file = open("Demarche scientifique/seq_TD1_sans_espace.txt", "w")
 file.write(newseq)
 file.close()
+file = open("Demarche scientifique/seq_TD1_sans_espace.txt", "r")
+chaine = file.read()
+longueur = len(chaine)
 if (adn == True):
     print("Valide")
-    for i in (range(1,len(chaine),taille)):
+    for i in (range(1,longueur+2,taille)):
         tg = chaine[i:i+taille].count("g")
         tc = chaine[i:i+taille].count("c")
         ta = chaine[i:i+taille].count("a")
@@ -28,7 +31,7 @@ if (adn == True):
         tauxgc = ((tg + tc) /taille) *100
         stri = str(i)
         strtauxgc = str(tauxgc)
-        ecrire = stri+"\t"+strtauxgc+"\n"
+        ecrire = "("+stri+",\t"+strtauxgc+")"+"\n"
         file_write.write(ecrire)
     print("Fichier creer")
 else:
