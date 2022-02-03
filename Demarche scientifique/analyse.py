@@ -1,7 +1,8 @@
-file = open("Demarche scientifique/seq_TD1_test.txt", "r")
+file = open("Demarche scientifique/seq_TD1.txt", "r")
 file_write = open("Demarche scientifique/seq_TD1_sortie.txt", "w")
 sans_espace = open("Demarche scientifique/seq_TD1_sans_espace.txt", "w")
 seq = file.readlines()
+position = 1
 adn = True
 taille = int(input("Entrer la taille de la fenetre"))
 ligne = 0
@@ -23,16 +24,21 @@ chaine = file.read()
 longueur = len(chaine)
 if (adn == True):
     print("Valide")
-    for i in (range(1,longueur+2,taille)):
+    for i in (range(0,longueur+1,taille)):
         tg = chaine[i:i+taille].count("g")
         tc = chaine[i:i+taille].count("c")
         ta = chaine[i:i+taille].count("a")
         tt = chaine[i:i+taille].count("t")
         tauxgc = ((tg + tc) /taille) *100
-        stri = str(i)
+        if position>len(chaine):
+            diff = position - len(chaine)
+            position = position - diff
+        strposition = str(position)
         strtauxgc = str(tauxgc)
-        ecrire = "("+stri+",\t"+strtauxgc+")"+"\n"
+        ecrire = "("+strposition+",\t"+strtauxgc+")"+"\n"
         file_write.write(ecrire)
+        print(position)
+        position += taille
     print("Fichier creer")
 else:
     print("Invalide")
