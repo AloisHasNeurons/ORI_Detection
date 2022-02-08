@@ -7,7 +7,7 @@ position = 1
 adn = True
 taille = int(input("Entrer la taille de la fenetre"))
 ligne = 0
-for line in seq: 
+for line in seq:
     ligne = ligne + 1
 chaine = ''.join([str(elem)for elem in seq[1:ligne+1]])
 for i in chaine:
@@ -25,13 +25,13 @@ chaine = file.read()
 longueur = len(chaine)
 if (adn == True):
     print("Valide")
-    for i in (range(0,longueur+1,taille)):
+    for i in (range(0, longueur+1, taille)):
         tg = chaine[i:i+taille].count("g")
         tc = chaine[i:i+taille].count("c")
         ta = chaine[i:i+taille].count("a")
         tt = chaine[i:i+taille].count("t")
-        tauxgc = ((tg + tc) /taille) *100
-        if position>len(chaine):
+        tauxgc = ((tg + tc) / taille) * 100
+        if position > len(chaine):
             diff = position - len(chaine)
             position = position - diff
         strposition = str(position)
