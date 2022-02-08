@@ -1,3 +1,4 @@
+# Test est ce que tu as les modifications
 file = open("Demarche scientifique/seq_TD1.txt", "r")
 file_write = open("Demarche scientifique/seq_TD1_sortie.txt", "w")
 sans_espace = open("Demarche scientifique/seq_TD1_sans_espace.txt", "w")
