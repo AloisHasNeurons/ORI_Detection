@@ -31,9 +31,7 @@ if (adn == True):
         tc = chaine[i:i+taille].count("c")
         tc = float(tc)
         tauxgc = tg + tc
-        print("1 : ",tauxgc)
         tauxgc = tauxgc/taille
-        print("2 : ",tauxgc)
         tauxgc = tauxgc*100
         if position > len(chaine):
             diff = position - len(chaine)
@@ -43,7 +41,6 @@ if (adn == True):
         ecrire = "("+strposition+",\t"+strtauxgc+")"+"\n"
         file_write.write(ecrire)
         position += taille
-        print("3 :",tauxgc)
     print("Fichier creer")
 else:
     print("Invalide")
