@@ -1,7 +1,7 @@
 # Test est ce que tu as les modifications
-file = open("Demarche scientifique/seq_TD1.txt", "r")
-file_write = open("Demarche scientifique/seq_TD1_sortie.txt", "w")
-sans_espace = open("Demarche scientifique/seq_TD1_sans_espace.txt", "w")
+file = open("seq_TD1.txt", "r")
+file_write = open("seq_TD1_sortie.txt", "w")
+sans_espace = open("seq_TD1_sans_espace.txt", "w")
 seq = file.readlines()
 position = 1
 adn = True
@@ -17,10 +17,10 @@ for i in chaine:
 seq = file.read()
 newseq = chaine.replace("\n", "")
 file.close()
-file = open("Demarche scientifique/seq_TD1_sans_espace.txt", "w")
+file = open("seq_TD1_sans_espace.txt", "w")
 file.write(newseq)
 file.close()
-file = open("Demarche scientifique/seq_TD1_sans_espace.txt", "r")
+file = open("seq_TD1_sans_espace.txt", "r")
 chaine = file.read()
 longueur = len(chaine)
 if (adn == True):
