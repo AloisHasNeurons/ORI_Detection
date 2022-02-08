@@ -27,10 +27,14 @@ if (adn == True):
     print("Valide")
     for i in (range(0, longueur+1, taille)):
         tg = chaine[i:i+taille].count("g")
+        tg = float(tg)
         tc = chaine[i:i+taille].count("c")
-        ta = chaine[i:i+taille].count("a")
-        tt = chaine[i:i+taille].count("t")
-        tauxgc = ((tg + tc) / taille) * 100
+        tc = float(tc)
+        tauxgc = tg + tc
+        print("1 : ",tauxgc)
+        tauxgc = tauxgc/taille
+        print("2 : ",tauxgc)
+        tauxgc = tauxgc*100
         if position > len(chaine):
             diff = position - len(chaine)
             position = position - diff
@@ -38,8 +42,8 @@ if (adn == True):
         strtauxgc = str(tauxgc)
         ecrire = "("+strposition+",\t"+strtauxgc+")"+"\n"
         file_write.write(ecrire)
-        print(position)
         position += taille
+        print("3 :",tauxgc)
     print("Fichier creer")
 else:
     print("Invalide")
