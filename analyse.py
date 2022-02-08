@@ -27,12 +27,8 @@ if (adn == True):
     print("Valide")
     for i in (range(0, longueur+1, taille)):
         tg = chaine[i:i+taille].count("g")
-        tg = float(tg)
         tc = chaine[i:i+taille].count("c")
-        tc = float(tc)
-        tauxgc = tg + tc
-        tauxgc = tauxgc/taille
-        tauxgc = tauxgc*100
+        tauxgc = ((tg + tc)/taille) *100
         if position > len(chaine):
             diff = position - len(chaine)
             position = position - diff
