@@ -11,21 +11,15 @@ ligne = 0
 #####################################
 #
 file = open("seq_TD1.txt", "r")
-sans_espace = open("seq_TD1_sans_espace.txt", "w")
 seq = file.readlines()
 for line in seq:
     ligne = ligne + 1
 chaine = ''.join([str(elem)for elem in seq[1:ligne+1]])
+longueur = len(chaine)
 newseq = chaine.replace("\n", "")
 file.close()
 
-#Création d'un fichier exploitable
-file = open("seq_TD1_sans_espace.txt", "w")
-file.write(newseq)
-file.close()
-
-file = open("seq_TD1_sans_espace.txt", "r")
-chaine = file.read()
+chaine = newseq
 file_write = open("seq_TD1_sortie.txt", "w")
 
 #####################################
@@ -34,7 +28,7 @@ file_write = open("seq_TD1_sortie.txt", "w")
 def tauxgc(i) :
     tg = chaine[i:i+taille].count("g")
     tc = chaine[i:i+taille].count("c")
-    tauxgc = ((tg + tc)/taille) *100
+    return ((tg + tc)/taille) *100
 
 #####################################
 #-----Vérification de la séquence---#
@@ -47,6 +41,24 @@ for i in chaine:
 #####################################
 #-----Ecriture du fichier de sortie-#
 #####################################
+#On peut calculer le taux de GC uniquement si la séquence est valide
+if (adn == True):
+    print("Séquence valide")
+    for i in (range(0, longueur+1, taille)):
+        #Calcul du taux de GC pour i 
+        tauxgcV = tauxgc(i)
+        strtauxgc = str(tauxgcV)
 
-chaine = ''.join([str(elem)for elem in seq[1:ligne+1]])
-print (position)
+        #Récupération de la position de i 
+        if position > len(chaine):
+            diff = position - len(chaine)
+            position = position - diff
+        strposition = str(position)
+        
+        #
+        ecrire = "("+strposition+",\t"+strtauxgc+")"+"\n"
+        file_write.write(ecrire)
+        position += taille
+    print("Fichier creer")
+else:
+    print("Séquence invalide")

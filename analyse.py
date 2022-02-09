@@ -15,7 +15,7 @@ for i in chaine:
     if i not in "atgc\n":
         adn = False
         break
-
+    
 seq = file.read()
 newseq = chaine.replace("\n", "")
 file.close()
