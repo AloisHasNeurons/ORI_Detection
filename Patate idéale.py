@@ -24,13 +24,8 @@ file.close()
 
 file_write = open("seq_TD1_sortie.txt", "w")
 
-#####################################
-#-----Vérification de la séquence---#
-#####################################
-for i in chaine:
-    if i not in "atgc":
-        adn = False
-        break
+#Vérification de la séquence
+adn = validation(chaine)
 
 #####################################
 #-----Ecriture du fichier de sortie-#
@@ -47,17 +42,9 @@ if (adn == True):
             diff = position - len(chaine)
             position = position - diff
         strposition = str(position)
-<<<<<<< HEAD
 
-        ecriture(strposition, strtauxgc)
-        position += taille
-=======
-        
-        #
-        ecrire = "("+strposition+",\t"+tauxgcV+")"+"\n"
-        file_write.write(ecrire)
+        ecriture(strposition, tauxgcV)
         position += tailleF
->>>>>>> 9db6cc276849be0a53388e9efccdefa0fb74e706
     print("Fichier creer")
 else:
     print("Séquence invalide")
