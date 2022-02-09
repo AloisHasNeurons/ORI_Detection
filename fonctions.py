@@ -1,14 +1,15 @@
 #################################################
-#-----Calcul du taux de GC----------------------#
+#------------Calcul du taux de GC---------------#
 #################################################
 def tauxgc(i, chaine, taille):
     tg = chaine[i:i+taille].count("g")
     tc = chaine[i:i+taille].count("c")
-    return ((tg + tc)/taille) * 100
+    tgc = ((tg + tc)/taille) * 100
+    return str(tgc)
 
-##########################################
-#-----Validation de la sequence----------#
-#########################################«
+#################################################
+#-----------Validation de la sequence-----------#
+#################################################
 def validation(chaine):
     for i in chaine:
         if i not in "atgc":
@@ -16,15 +17,39 @@ def validation(chaine):
         else:
             return True
 
-######################################
-#-----Ecrire sur le fichier----------#
-######################################
-def ecriture(strposition, strtauxgc, file):
-    ecrire = "("+strposition+",\t"+strtauxgc+")"+"\n"
+#################################################
+#-----------Ecrire sur le fichier---------------#
+#################################################
+def ecriture(position, tauxgcV, file):
+    strposition = str(position)
+    ecrire = "("+strposition+",\t"+tauxgcV+")"+"\n"
     file.write(ecrire)
 
 #################################################
-#-----Suppression des retours chariots----------#
+#------Suppression des retours chariots---------#
 #################################################
 def supprrc(chaine):
-    chaine.replace("\n", "")
+    newseq = chaine.replace("\n", "")
+    return newseq
+
+#################################################
+#-----------Changement de la position-----------#
+#################################################
+def checkposition(position, chaine, pas):
+    if position > len(chaine):
+        position -= len(chaine)
+        return position
+    position += pas
+    return position
+    
+#################################################
+#-----Demande des valeurs des variables---------#
+#################################################
+def inputfp():
+    tailleF = int(input("Entrez la taille de la fenetre : "))
+    while tailleF < 0:
+        tailleF = int(input("Entrez une taille de fenêtre > 0 : "))
+    pas = int(input("Entrez le pas : "))
+    while pas > tailleF:
+        pas = int(input("Entrez un pas inférieur à la taille de la fenêtre svp : "))
+    return tailleF, pas
