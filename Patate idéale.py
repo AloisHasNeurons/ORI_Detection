@@ -4,30 +4,31 @@ from fonctions import *
 #######################################################
 position = 1
 adn = True
-taille = int(input("Entrer la taille de la fenetre"))
+tailleF = int(input("Entrer la taille de la fenetre"))
 ligne = 0
 
 #######################################################
 #-------------Traitement des fichiers-----------------#
 #######################################################
-#
+#On ouvre le fichier et on stocke les valeurs dans une variable
 file = open("seq_TD1.txt", "r")
 seq = file.readlines()
+
+#Récupération du nombre de lignes
 for line in seq:
     ligne = ligne + 1
 chaine = ''.join([str(elem)for elem in seq[1:ligne+1]])
 longueur = len(chaine)
-newseq = chaine.replace("\n", "")
+chaine = supprrc(chaine)
 file.close()
 
-chaine = newseq
 file_write = open("seq_TD1_sortie.txt", "w")
 
 #####################################
 #-----Vérification de la séquence---#
 #####################################
 for i in chaine:
-    if i not in "atgc\n":
+    if i not in "atgc":
         adn = False
         break
 
@@ -37,10 +38,9 @@ for i in chaine:
 #On peut calculer le taux de GC uniquement si la séquence est valide
 if (adn == True):
     print("Séquence valide")
-    for i in (range(0, longueur+1, taille)):
+    for i in (range(0, longueur+1, tailleF)):
         #Calcul du taux de GC pour i 
-        tauxgcV = tauxgc(i, chaine, taille)
-        strtauxgc = str(tauxgcV)
+        tauxgcV = tauxgc(i, chaine, tailleF)
 
         #Récupération de la position de i 
         if position > len(chaine):
@@ -49,9 +49,9 @@ if (adn == True):
         strposition = str(position)
         
         #
-        ecrire = "("+strposition+",\t"+strtauxgc+")"+"\n"
+        ecrire = "("+strposition+",\t"+tauxgcV+")"+"\n"
         file_write.write(ecrire)
-        position += taille
+        position += tailleF
     print("Fichier creer")
 else:
     print("Séquence invalide")
