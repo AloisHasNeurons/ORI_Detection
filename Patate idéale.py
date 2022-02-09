@@ -1,14 +1,15 @@
-#####################################
-#-----Déclaration des variables-----#
-#####################################
+from fonctions import *
+#######################################################
+#-------------Déclaration des variables---------------#
+#######################################################
 position = 1
 adn = True
 taille = int(input("Entrer la taille de la fenetre"))
 ligne = 0
 
-#####################################
-#-----Traitement des fichiers-------#
-#####################################
+#######################################################
+#-------------Traitement des fichiers-----------------#
+#######################################################
 #
 file = open("seq_TD1.txt", "r")
 seq = file.readlines()
@@ -21,14 +22,6 @@ file.close()
 
 chaine = newseq
 file_write = open("seq_TD1_sortie.txt", "w")
-
-#####################################
-#-----Calcul du taux de GC----------#
-#####################################
-def tauxgc(i) :
-    tg = chaine[i:i+taille].count("g")
-    tc = chaine[i:i+taille].count("c")
-    return ((tg + tc)/taille) *100
 
 #####################################
 #-----Vérification de la séquence---#
@@ -46,7 +39,7 @@ if (adn == True):
     print("Séquence valide")
     for i in (range(0, longueur+1, taille)):
         #Calcul du taux de GC pour i 
-        tauxgcV = tauxgc(i)
+        tauxgcV = tauxgc(i, chaine, taille)
         strtauxgc = str(tauxgcV)
 
         #Récupération de la position de i 
