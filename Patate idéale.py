@@ -47,10 +47,8 @@ if (adn == True):
             diff = position - len(chaine)
             position = position - diff
         strposition = str(position)
-        
-        #
-        ecrire = "("+strposition+",\t"+strtauxgc+")"+"\n"
-        file_write.write(ecrire)
+
+        ecriture(strposition, strtauxgc)
         position += taille
     print("Fichier creer")
 else:
