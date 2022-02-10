@@ -32,11 +32,7 @@ if (adn == True):
     print("Séquence valide")
     tailleF, pas = inputfp()
     file_write = open("tauxGC.txt", "w")
-    for i in (range(0, longueur+1, pas)):
-        # Calcul du taux de GC dans la taille de la fenêtre
-        tauxgcV = tauxgc(i, chaine, tailleF)
-        ecriture(position, tauxgcV, file_write)
-        position = checkposition(position, chaine, pas)
+    traitement(pas, tailleF, file_write, longueur, chaine)
     print("Fichier de taux de GC créé")
     file_write.close()
 else:

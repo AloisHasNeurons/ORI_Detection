@@ -53,3 +53,10 @@ def inputfp():
     while pas > tailleF:
         pas = int(input("Entrez un pas inférieur à la taille de la fenêtre svp : "))
     return tailleF, pas
+    
+def traitement (pas, tailleF, file, longueur, chaine):
+    position = 1
+    for i in (range(0, longueur+1, pas)):
+        tauxgcV = tauxgc(i, chaine, tailleF)
+        ecriture(position, tauxgcV, file)
+        position = checkposition(position, chaine, pas)
