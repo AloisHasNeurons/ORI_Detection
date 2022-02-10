@@ -24,9 +24,9 @@ file.close()
 # Vérification de la séquence
 adn = validation(chaine)
 
-#####################################
-#-----Ecriture du fichier de sortie-#
-#####################################
+#######################################################
+#-------------Ecriture du fichier de sortie-----------#
+#######################################################
 # On peut calculer le taux de GC uniquement si la séquence est valide
 if (adn == True):
     print("Séquence valide")
