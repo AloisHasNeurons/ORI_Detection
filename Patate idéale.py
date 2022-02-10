@@ -2,12 +2,15 @@ from fonctions import *
 #######################################################
 #-------------Déclaration des variables---------------#
 #######################################################
+
 position = 1
 adn = True
 ligne = 0
+
 #######################################################
 #-------------Traitement des fichiers-----------------#
 #######################################################
+
 # On ouvre le fichier et on stocke les valeurs dans une variable
 file = open("seq_TD1.txt", "r")
 seq = file.readlines()
@@ -27,6 +30,7 @@ adn = validation(chaine)
 #######################################################
 #-------------Ecriture du fichier de sortie-----------#
 #######################################################
+
 # On peut calculer le taux de GC uniquement si la séquence est valide
 if (adn == True):
     print("Séquence valide")
