@@ -41,3 +41,4 @@ if (adn == True):
     file_write.close()
 else:
     print("Séquence invalide")
+
