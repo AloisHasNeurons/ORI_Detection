@@ -31,7 +31,6 @@ def validation(chaine):
 def ecriture(position, tauxgcV, file):
     strposition = str(position)
     ecrire = strposition+"\t"+tauxgcV+"\n"
-    print(ecrire)
     file.write(ecrire)
 
 

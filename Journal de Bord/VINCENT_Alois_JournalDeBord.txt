@@ -1,0 +1,24 @@
+VINCENT Aloïs
+#######################################
+############24 janvier 2022############
+#######################################
+
+gc.py = calcul du taux de gc
+
+Durant cette séance nous avons intégré la prise en charge de fichier
+FASTA par notre programme.
+
+#######################################
+############25 janvier 2022############
+#######################################
+
+gc_fg.py = calcul du taux de gc avec la fenêtre glissante
+
+Aujourd'hui nous avons intégré la technique de la fenêtre glissante dans notre
+programme, 
+
+#######################################
+############28 mars 2022###############
+#######################################
+
+On a fini.

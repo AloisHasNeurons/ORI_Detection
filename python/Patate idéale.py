@@ -1,4 +1,7 @@
 from fonctions import *
+import rpy2.robjects as robjects
+import subprocess
+
 #######################################################
 #-------------Déclaration des variables---------------#
 #######################################################
@@ -38,8 +41,9 @@ if (adn == True):
     file_write = open("sortie/tauxGC.txt", "w")
     file_write.write("Position"+"\t"+"TauxGC"+"\n")
     traitement(pas, tailleF, file_write, longueur, chaine)
-    print("Fichier de taux de GC créé")
+    print("Fichier de taux de GC créé")   
     file_write.close()
+    print("Lancement du programme R")
+    subprocess.call(["Rscript", "R/graph_plot.r"])
 else:
     print("Séquence invalide")
-

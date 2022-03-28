@@ -4,6 +4,7 @@
 #include <math.h>
 #include <stdbool.h>
 #include <time.h>
+#include "fonctions.c"
 
 
 //open the file "Borrelia_burgdorferi_B31_complete_genome.txt" and read the data into a string called "data"
