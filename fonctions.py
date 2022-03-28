@@ -63,8 +63,8 @@ def inputfp():
     while tailleF < 0:
         tailleF = int(input("Entrez une taille de fenêtre > 0 : "))
     pas = int(input("Entrez le pas : "))
-    while pas > tailleF:
-        pas = int(input("Entrez un pas inférieur à la taille de la fenêtre svp : "))
+    while pas > tailleF | pas <= 0:
+        pas = int(input("Entrez un pas inférieur à la taille de la fenêtre et supérieur à 0 svp : "))
     return tailleF, pas
 
 #################################################
