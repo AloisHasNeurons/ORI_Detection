@@ -2,34 +2,40 @@
 #------------Calcul du taux de GC---------------#
 #################################################
 def tauxgc(i, chaine, taille):
-    tg = chaine[i:i+taille].count("g")
-    tc = chaine[i:i+taille].count("c")
-    tgc = ((tg + tc)/taille) * 100
+    tg = chaine[i:i+taille].count("G")
+    tG = chaine[i:i+taille].count("g")
+    tc = chaine[i:i+taille].count("C")
+    tC = chaine[i:i+taille].count("c")
+    tgc = ((tg + tc + tG + tC)/taille) * 100
     return str(tgc)
 
 #################################################
 #-----------Validation de la sequence-----------#
 #################################################
 
+
 def validation(chaine):
     for i in chaine:
-        if i not in "atgc":
+        if i not in "atgcATGCKMNRSWY":
             return False
-        else:
-            return True
+    return True
+        
+        
 
 #################################################
 #-----------Ecrire sur le fichier---------------#
 #################################################
 
+
 def ecriture(position, tauxgcV, file):
     strposition = str(position)
-    ecrire = "("+strposition+",\t"+tauxgcV+")"+"\n"
+    ecrire = strposition+"\t"+tauxgcV+"\n"
     file.write(ecrire)
 
 #################################################
 #------Suppression des retours chariots---------#
 #################################################
+
 
 def supprrc(chaine):
     newseq = chaine.replace("\n", "")
@@ -38,6 +44,7 @@ def supprrc(chaine):
 #################################################
 #-----------Changement de la position-----------#
 #################################################
+
 
 def checkposition(position, chaine, pas):
     if position > len(chaine):
@@ -49,6 +56,7 @@ def checkposition(position, chaine, pas):
 #################################################
 #-----Demande des valeurs des variables---------#
 #################################################
+
 
 def inputfp():
     tailleF = int(input("Entrez la taille de la fenetre : "))
@@ -62,6 +70,7 @@ def inputfp():
 #################################################
 #--------Création du fichier de sortie----------#
 #################################################
+
 
 def traitement(pas, tailleF, file, longueur, chaine):
     position = 1
