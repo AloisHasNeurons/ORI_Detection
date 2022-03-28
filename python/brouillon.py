@@ -1,4 +1,4 @@
-file = open("seq_TD1.txt", "r")
+file = open("Borrelia_burgdorferi_B31_complete_genome.txt", "r")
 file_write = open("seq_TD1_sortie.txt", "w")
 sans_espace = open("seq_TD1_sans_espace.txt", "w")
 seq = file.readlines()
@@ -12,7 +12,7 @@ for line in seq:
 chaine = ''.join([str(elem)for elem in seq[1:ligne+1]])
 
 for i in chaine:
-    if i not in "atgc\n":
+    if i not in "atgcATGCKMNRSWY\n":
         adn = False
         break
     
@@ -29,8 +29,8 @@ longueur = len(chaine)
 if (adn == True):
     print("Valide")
     for i in (range(0, longueur+1, taille)):
-        tg = chaine[i:i+taille].count("g")
-        tc = chaine[i:i+taille].count("c")
+        tg = chaine[i:i+taille].count("G")
+        tc = chaine[i:i+taille].count("C")
         tauxgc = ((tg + tc)/taille) *100
         if position > len(chaine):
             diff = position - len(chaine)

@@ -1,12 +1,13 @@
 #################################################
 #------------Calcul du taux de GC---------------#
 #################################################
+
+
 def tauxgc(i, chaine, taille):
     tg = chaine[i:i+taille].count("G")
-    tG = chaine[i:i+taille].count("g")
     tc = chaine[i:i+taille].count("C")
-    tC = chaine[i:i+taille].count("c")
-    tgc = ((tg + tc + tG + tC)/taille) * 100
+    tgc = ((tg + tc)/taille) * 100
+    tgc = round(tgc, 2)
     return str(tgc)
 
 #################################################
@@ -30,7 +31,9 @@ def validation(chaine):
 def ecriture(position, tauxgcV, file):
     strposition = str(position)
     ecrire = strposition+"\t"+tauxgcV+"\n"
+    print(ecrire)
     file.write(ecrire)
+
 
 #################################################
 #------Suppression des retours chariots---------#
@@ -39,7 +42,9 @@ def ecriture(position, tauxgcV, file):
 
 def supprrc(chaine):
     newseq = chaine.replace("\n", "")
+    newseq = newseq.upper()
     return newseq
+
 
 #################################################
 #-----------Changement de la position-----------#
@@ -52,6 +57,7 @@ def checkposition(position, chaine, pas):
         return position
     position += pas
     return position
+
 
 #################################################
 #-----Demande des valeurs des variables---------#
@@ -66,6 +72,7 @@ def inputfp():
     while pas > tailleF | pas <= 0:
         pas = int(input("Entrez un pas inférieur à la taille de la fenêtre et supérieur à 0 svp : "))
     return tailleF, pas
+
 
 #################################################
 #--------Création du fichier de sortie----------#

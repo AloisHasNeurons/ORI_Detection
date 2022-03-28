@@ -12,7 +12,7 @@ ligne = 0
 #######################################################
 
 # On ouvre le fichier et on stocke les valeurs dans une variable
-file = open("Borrelia_burgdorferi_B31_complete_genome.txt", "r")
+file = open("Sequence/Borrelia_burgdorferi_B31_complete_genome.txt", "r")
 seq = file.readlines()
 
 # Récupération du nombre de lignes
@@ -35,7 +35,7 @@ adn = validation(chaine)
 if (adn == True):
     print("Séquence valide")
     tailleF, pas = inputfp()
-    file_write = open("tauxGC.txt", "w")
+    file_write = open("sortie/tauxGC.txt", "w")
     file_write.write("Position"+"\t"+"TauxGC"+"\n")
     traitement(pas, tailleF, file_write, longueur, chaine)
     print("Fichier de taux de GC créé")
