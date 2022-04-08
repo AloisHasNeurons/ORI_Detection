@@ -1,12 +1,10 @@
 from fonctions import *
-import rpy2.robjects as robjects
 import subprocess
 
 #######################################################
 #-------------Déclaration des variables---------------#
 #######################################################
 
-position = 1
 adn = True
 ligne = 0
 
@@ -15,7 +13,7 @@ ligne = 0
 #######################################################
 
 # On ouvre le fichier et on stocke les valeurs dans une variable
-file = open("Sequence/Borrelia_burgdorferi_B31_complete_genome.txt", "r")
+file = open("La-patate-ideale/Sequence/Borrelia_burgdorferi_B31_complete_genome.txt", "r")
 seq = file.readlines()
 
 # Récupération du nombre de lignes
@@ -38,12 +36,12 @@ adn = validation(chaine)
 if (adn == True):
     print("Séquence valide")
     tailleF, pas = inputfp()
-    file_write = open("sortie/tauxGC.txt", "w")
+    file_write = open("La-patate-ideale/sortie/tauxGC.txt", "w")
     file_write.write("Position"+"\t"+"TauxGC"+"\n")
     traitement(pas, tailleF, file_write, longueur, chaine)
     print("Fichier de taux de GC créé")   
     file_write.close()
     print("Lancement du programme R")
-    subprocess.call(["Rscript", "R/graph_plot.r"])
+    subprocess.call(["Rscript", "La-patate-ideale/R/graph_plot.r"])
 else:
     print("Séquence invalide")

@@ -3,9 +3,14 @@
 #################################################
 
 
-def tauxgc(i, chaine, taille):
-    tg = chaine[i:i+taille].count("G")
-    tc = chaine[i:i+taille].count("C")
+def tauxgc(i, chaine, taille, position, longueur):
+    if (position > longueur - taille):
+        tailleM = longueur - position
+        print(tailleM)
+    else :
+        tailleM = taille
+    tg = chaine[i:i+tailleM].count("G")
+    tc = chaine[i:i+tailleM].count("C")
     tgc = ((tg + tc)/taille) * 100
     tgc = round(tgc, 2)
     return str(tgc)
@@ -20,8 +25,7 @@ def validation(chaine):
         if i not in "atgcATGCKMNRSWY":
             return False
     return True
-        
-        
+
 
 #################################################
 #-----------Ecrire sur le fichier---------------#
@@ -51,10 +55,7 @@ def supprrc(chaine):
 
 
 def checkposition(position, chaine, pas):
-    if position > len(chaine):
-        position -= len(chaine)
-        return position
-    position += pas
+    position = position + pas
     return position
 
 
@@ -69,7 +70,8 @@ def inputfp():
         tailleF = int(input("Entrez une taille de fenêtre > 0 : "))
     pas = int(input("Entrez le pas : "))
     while pas > tailleF | pas <= 0:
-        pas = int(input("Entrez un pas inférieur à la taille de la fenêtre et supérieur à 0 svp : "))
+        pas = int(input(
+            "Entrez un pas inférieur à la taille de la fenêtre et supérieur à 0 svp : "))
     return tailleF, pas
 
 
@@ -80,7 +82,7 @@ def inputfp():
 
 def traitement(pas, tailleF, file, longueur, chaine):
     position = 1
-    for i in (range(0, longueur+1, pas)):
-        tauxgcV = tauxgc(i, chaine, tailleF)
+    for i in (range(1, longueur, pas)):
+        tauxgcV = tauxgc(i, chaine, tailleF, position, longueur)
         ecriture(position, tauxgcV, file)
         position = checkposition(position, chaine, pas)
