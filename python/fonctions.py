@@ -4,14 +4,17 @@
 
 
 def tauxgc(i, chaine, taille, position, longueur):
-    if (position > longueur - taille):
+    if (position >= longueur - taille):
+        print("position :", position)
+        print("longueur :", longueur)
+        print("taille :", taille)
         tailleM = longueur - position
-        print(tailleM)
-    else :
+        print("tailleM", tailleM)
+    else:
         tailleM = taille
     tg = chaine[i:i+tailleM].count("G")
     tc = chaine[i:i+tailleM].count("C")
-    tgc = ((tg + tc)/taille) * 100
+    tgc = ((tg + tc)/tailleM) * 100
     tgc = round(tgc, 2)
     return str(tgc)
 
