@@ -84,8 +84,13 @@ def inputfp():
 
 
 def traitement(pas, tailleF, file, longueur, chaine):
-    position = 1
-    for i in (range(1, longueur, pas)):
+    position = 0
+    for i in (range(0, longueur, pas)):
+        if (position >= longueur - tailleF):
+            tauxgcV = tauxgc(i, chaine, tailleF, position, longueur)
+            ecriture(position, tauxgcV, file)
+            position = checkposition(position, chaine, pas)
+            break
         tauxgcV = tauxgc(i, chaine, tailleF, position, longueur)
         ecriture(position, tauxgcV, file)
         position = checkposition(position, chaine, pas)
