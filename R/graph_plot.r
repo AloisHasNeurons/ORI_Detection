@@ -14,7 +14,7 @@ if (os == "Windows") {
        setwd("/home/alois/Bureau/Demarche_Scientifique/La-patate-ideale/sortie")
 }
 
-plot(data[,1], data[,2], type = "l", xlab = "Position", ylab = "Taux GC", main = "ORI", ylim = c(20,50)) #nolint
+plot(data[,1], data[,2], type = "l", xlab = "Position en kilobases", ylab = "Taux GC", main = "ORI", ylim = c(20,50)) #nolint
 print("Dot plot done")
 
 # Setup
@@ -32,5 +32,5 @@ if (os == "Windows") {
        setwd("/home/alois/Bureau/Demarche_Scientifique/La-patate-ideale/sortie")
 }
 
-plot(data[,1], data[,2], type = "l", xlab = "Position", ylab = "G-C/G+C", main = "ORI", ylim = c(-40,40)) #nolint
+plot(data[,1], data[,2], type = "l", xlab = "Position en kilobases", ylab = "G-C/G+C", main = "ORI", ylim = c(-40,40)) #nolint
 print("Second plot done")

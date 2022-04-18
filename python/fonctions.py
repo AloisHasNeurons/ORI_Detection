@@ -96,11 +96,11 @@ def traitement(pas, tailleF, file, longueur, chaine):
     for i in (range(0, longueur, pas)):
         if (position >= longueur - tailleF):
             tauxgcV = tauxgc(i, chaine, tailleF, position, longueur)
-            ecriture(position, tauxgcV, file)
+            ecriture(position/1000, tauxgcV, file)
             position = checkposition(position, chaine, pas)
             break
         tauxgcV = tauxgc(i, chaine, tailleF, position, longueur)
-        ecriture(position, tauxgcV, file)
+        ecriture(position/1000, tauxgcV, file)
         position = checkposition(position, chaine, pas)
 
 
@@ -109,9 +109,9 @@ def traitement2(pas, tailleF, file, longueur, chaine):
     for i in (range(0, longueur, pas)):
         if (position >= longueur - tailleF):
             tauxgcV = calcgc(i, chaine, tailleF, position, longueur)
-            ecriture(position, tauxgcV, file)
+            ecriture(position/1000, tauxgcV, file)
             position = checkposition(position, chaine, pas)
             break
         tauxgcV = calcgc(i, chaine, tailleF, position, longueur)
-        ecriture(position, tauxgcV, file)
+        ecriture(position/1000, tauxgcV, file)
         position = checkposition(position, chaine, pas)
