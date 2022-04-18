@@ -5,16 +5,24 @@
 
 def tauxgc(i, chaine, taille, position, longueur):
     if (position >= longueur - taille):
-        print("position :", position)
-        print("longueur :", longueur)
-        print("taille :", taille)
         tailleM = longueur - position
-        print("tailleM", tailleM)
     else:
         tailleM = taille
     tg = chaine[i:i+tailleM].count("G")
     tc = chaine[i:i+tailleM].count("C")
     tgc = ((tg + tc)/tailleM) * 100
+    tgc = round(tgc, 2)
+    return str(tgc)
+
+
+def calcgc(i, chaine, taille, position, longueur):
+    if (position >= longueur - taille):
+        tailleM = longueur - position
+    else:
+        tailleM = taille
+    tg = chaine[i:i+tailleM].count("G")
+    tc = chaine[i:i+tailleM].count("C")
+    tgc = ((tg - tc)/(tg + tc)) * 100
     tgc = round(tgc, 2)
     return str(tgc)
 
@@ -92,5 +100,18 @@ def traitement(pas, tailleF, file, longueur, chaine):
             position = checkposition(position, chaine, pas)
             break
         tauxgcV = tauxgc(i, chaine, tailleF, position, longueur)
+        ecriture(position, tauxgcV, file)
+        position = checkposition(position, chaine, pas)
+
+
+def traitement2(pas, tailleF, file, longueur, chaine):
+    position = 0
+    for i in (range(0, longueur, pas)):
+        if (position >= longueur - tailleF):
+            tauxgcV = calcgc(i, chaine, tailleF, position, longueur)
+            ecriture(position, tauxgcV, file)
+            position = checkposition(position, chaine, pas)
+            break
+        tauxgcV = calcgc(i, chaine, tailleF, position, longueur)
         ecriture(position, tauxgcV, file)
         position = checkposition(position, chaine, pas)
