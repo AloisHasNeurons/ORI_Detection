@@ -45,7 +45,7 @@ if (adn == True):
     file_write.close()
 
     ########- Ecriture du fichier de G-C/G+C -########
-    file_write = open("La-patate-ideale/sortie/tauxGC2.txt", "w")
+    file_write = open("La-patate-ideale/sortie/calcgc.txt", "w")
     file_write.write("Position"+"\t"+"G-C/G+C"+"\n")
     traitement2(pas, tailleF, file_write, longueur, chaine)
     print("Fichier du G-C/G+C créé")
