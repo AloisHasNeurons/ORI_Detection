@@ -13,7 +13,7 @@ ligne = 0
 #######################################################
 
 # On ouvre le fichier et on stocke les valeurs dans une variable
-file = open("La-patate-ideale/Sequence/Borrelia_burgdorferi_B31_complete_genome.txt", "r")
+file = open("Sequence\Borrelia_burgdorferi_B31_complete_genome.txt", "r")
 seq = file.readlines()
 
 # Récupération du nombre de lignes
@@ -38,21 +38,21 @@ if (adn == True):
     tailleF, pas = inputfp()
 
     ########- Ecriture du fichier de taux de GC -########
-    file_write = open("La-patate-ideale/sortie/tauxGC.txt", "w")
+    file_write = open("sortie\\tauxGC.txt", "w")
     file_write.write("Position"+"\t"+"TauxGC"+"\n")
     traitement(pas, tailleF, file_write, longueur, chaine)
     print("Fichier de taux de GC créé")
     file_write.close()
 
     ########- Ecriture du fichier de G-C/G+C -########
-    file_write = open("La-patate-ideale/sortie/calcgc.txt", "w")
+    file_write = open("sortie\\calcGC.txt", "w")
     file_write.write("Position"+"\t"+"G-C/G+C"+"\n")
     traitement2(pas, tailleF, file_write, longueur, chaine)
     print("Fichier du G-C/G+C créé")
     file_write.close()
 
     print("Lancement du programme R")
-    subprocess.call(["Rscript", "La-patate-ideale/R/graph_plot.r"])
+    subprocess.call(["Rscript", "R\graph_plot.r"])
 
 else:
     print("Séquence invalide")
