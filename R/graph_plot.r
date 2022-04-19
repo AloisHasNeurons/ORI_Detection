@@ -24,7 +24,7 @@ if (os == "Windows") {
     setwd("/home/alois/Bureau/Demarche_Scientifique/La-patate-ideale")
 }
 # Load data
-data <- read.table("sortie/tauxGC2.txt", sep = "\t", header = TRUE) # nolint
+data <- read.table("sortie/calcgc.txt", sep = "\t", header = TRUE) # nolint
 
 if (os == "Windows") {
    setwd("C:/Users/madgu/OneDrive/Cours-L1-Evry/Bloc Complémentaire/Démarche_scientifique_projet/La-patate-ideale/La-patate-ideale/sortie")#nolint
