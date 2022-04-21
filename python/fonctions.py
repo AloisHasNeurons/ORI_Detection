@@ -85,7 +85,20 @@ def inputfp():
             "Entrez un pas inférieur à la taille de la fenêtre et supérieur à 0 svp : "))
     return tailleF, pas
 
+#################################################
+#-----Demande des valeurs des variables---------#
+#################################################
 
+def menu ():
+    reponse = int(input("Choissisez une option : \n 1 - Taux de GC \n 2 - G-C/G+C \n 3 - Les deux calculs \n"))
+    while reponse > 3 | reponse < 1:
+        reponse = int(input("Choissisez une option : \n 1 - Taux de GC \n 2 - G-C/G+C \n 3 - Les deux calculs \n"))
+    if (reponse == 1):
+        return 1
+    elif (reponse == 2):
+        return 2
+    elif (reponse == 3):
+        return 3
 #################################################
 #--------Création du fichier de sortie----------#
 #################################################
