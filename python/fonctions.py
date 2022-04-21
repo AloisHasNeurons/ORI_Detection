@@ -90,9 +90,9 @@ def inputfp():
 #################################################
 
 def menu ():
-    reponse = int(input("Choissisez une option : \n 1 - Taux de GC \n 2 - G-C/G+C \n 3 - Les deux calculs \n"))
+    reponse = int(input("Choisissez une option : \n 1 - Taux de GC \n 2 - G-C/G+C \n 3 - Les deux calculs \n"))
     while reponse > 3 | reponse < 1:
-        reponse = int(input("Choissisez une option : \n 1 - Taux de GC \n 2 - G-C/G+C \n 3 - Les deux calculs \n"))
+        reponse = int(input("Choisissez une option : \n 1 - Taux de GC \n 2 - G-C/G+C \n 3 - Les deux calculs \n"))
     if (reponse == 1):
         return 1
     elif (reponse == 2):
