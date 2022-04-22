@@ -26,6 +26,7 @@ def calcgc(i, chaine, taille, position, longueur):
     tgc = round(tgc, 2)
     return str(tgc)
 
+
 #################################################
 #-----------Validation de la sequence-----------#
 #################################################
@@ -81,12 +82,11 @@ def inputfp():
         tailleF = int(input("Entrez une taille de fenêtre > 0 : "))
     pas = int(input("Entrez le pas : "))
     while pas > tailleF | pas <= 0:
-        pas = int(input(
-            "Entrez un pas inférieur à la taille de la fenêtre et supérieur à 0 svp : "))
+        pas = int(input("Entrez un pas inférieur à la taille de la fenêtre et supérieur à 0 svp : "))
     return tailleF, pas
 
 
-def menu ():
+def menu():
     reponse = int(input("Choisissez une option : \n 1 - Taux de GC \n 2 - G-C/G+C \n 3 - Les deux calculs \n"))
     # Check that reponse is between 1 and 3
     while reponse < 1 or reponse > 3:
@@ -129,7 +129,8 @@ def traitement2(pas, tailleF, file, longueur, chaine):
 #--------Création du fichier de sortie----------#
 #################################################
 
-def createFile(reponse,pas,tailleF,longueur,chaine):
+
+def createFile(reponse, pas, tailleF, longueur, chaine):
     if (reponse == 3):
         createFile(1, pas, tailleF, longueur, chaine)
         createFile(2, pas, tailleF, longueur, chaine)

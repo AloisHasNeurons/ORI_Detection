@@ -37,7 +37,7 @@ if (adn == True):
     print("Séquence valide")
     tailleF, pas = inputfp()
     reponse = menu()
-    createFile(reponse,pas, tailleF, longueur, chaine)
+    createFile(reponse, pas, tailleF, longueur, chaine)
     # Lancement du programme R en fonction de l'option choisie
     print("Lancement du programme R")
     if (reponse == 3):

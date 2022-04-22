@@ -9,5 +9,5 @@ data <- read.table("sortie/tauxGC.txt", sep = "\t", header = TRUE) # nolint
 setwd("sortie")
 
 # Plot
-plot(data[,1], data[,2], type = "l", xlab = "Position en kilobases", ylab = "Taux GC", main = "ORI", ylim = c(20,50)) #nolint
+plot(data[, 1], data[, 2], type = "l", xlab = "Position en kilobases", ylab = "Taux GC", main = "ORI", ylim = c(20, 50)) # nolint
 print("Plot done")
