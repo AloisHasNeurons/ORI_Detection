@@ -1,0 +1,350 @@
+################################
+#------- 24 janvier 2022 ------# 
+################################
+
+Durant cette séance nous avons écrit un programme qui 
+compte le nombre de G et de C dans chaque ligne d'un fichier
+en commençant à la deuxième ligne.
+
+Pour cela, nous avons retiré les retours chariots dans la variable
+que nous utilisons pour stocker la chaîne de caractères.
+
+Nous avons également implémenté une vérification de la séquence
+nucléotidique, en vérifiant que la séquence est bien constituée
+de lettres comprises dans {A,C,G,T}.
+
+Le calcul du taux de gc se fait avec la totalité du fichier.
+
+
+################################
+#------- 26 janvier 2022 ------# 
+################################
+
+Durant ce jour nous avons implémenté la fenêtre,
+on demande à l'utilisateur de choisir la taille de la fenêtre
+et on calcule le taux de gc entre 1 et la taille du fichier, avec
+un pas correspondant à la taille de la fenêtre et une fenêtre de 10.
+
+/!\ Il y a eu une erreur de compréhension sur la méthode de la
+fenêtre glissante à ce stade du développement. 
+
+Puis nous rentrons les résultats du calcul du taux de gc dans un
+fichier texte que nous avons placé dans le dossier "sortie".
+
+
+################################
+#------- 27 janvier 2022 ------# 
+################################
+
+Durant cette journée nous avons ajouté une variable
+pour stocker la taille du fichier sans les retours chariots
+et nous avons ajouté des parenthèses dans le fichier de sortie
+
+
+################################
+#------- 03 février 2022 ------# 
+################################
+
+Durant cette séance nous avons ajouté une variable position
+qui nous permet de vérifier que l'on ne dépasse pas la taille de
+la séquence avec la fenêtre glissante.
+
+Si la position est supérieure à la taille de la séquence alors 
+on fait le calcul "position - taille" pour obtenir la différence
+et on fait le dernier calcul avec une fenêtre de taille 
+(position - diff)
+
+
+################################
+#------- 08 février 2022 ------# 
+################################
+
+Durant ce jour nous avons commenté proprement le programme,
+nous l'avons mis en forme et nous avons commencé à le découper
+en deux fichiers. 
+Un premier fichier "main.py" que l'on exécute initialement et qui
+utilise les fonctions du fichier "fonctions.py".
+
+Nous avons également corrigé un bug avec l'une des versions de python
+que l'on utilisait, en effet tous les taux de gc valaient 0 car python
+ne voulait pas utiliser de float pour faire les calculs.
+On a alors spécifié le type de la variable avec float(tg) et float(tc)
+avant de faire le calcul, ensuite le calcul fonctionnait à nouveau.
+
+En ce jour nous avons principalement une fonction pour le calcul du
+taux de GC ("tauxgc(i)) prenant en paramètre la position de départ 
+et faisant le calcul entre cette position et cette position + la taille
+de la fenêtre.
+
+
+################################
+#------- 09 février 2022 ------# 
+################################
+
+Pendant cette journée nous avons fini de diviser les fichiers en 2.
+Ainsi nous avons tout réécrit sous forme de fonctions.
+Dans le fichier "fonctions.py" on trouve les fonctions suivantes :
+
+tauxgc(i, chaine, taille)
+Une fonction qui compte le nombre de gc dans une chaîne de caractères
+"chaine" entre "i" et "i + taille" et qui renvoie le résultat du calcul
+((tg + tc)/taille) * 100.
+
+validation(chaine)
+Une fonction qui vérifie que la "chaine" est bien constituée de
+lettres comprises dans {A,C,G,T}. Elle renvoie True si c'est le cas,
+False sinon.
+
+ecriture(position, tauxgcV, file)
+Une fonction qui écrit dans un fichier texte le résultat du calcul
+du taux de GC.
+Le fichier est "file" le résultat est "tauxgcV" et la position est "position".
+La fonction écrit le résultat dans le fichier en ajoutant une tabulation entre
+la position et le résultat et en ajoutant un retour chariot à la fin.
+
+supprrc(chaine)
+Une fonction qui retire les retours chariots d'une chaîne de caractères.
+La fonction parcourt la chaine et remplace les "\n" par des "".
+Elle renvoie la chaine sans retours chariots.
+
+checkposition(position, chaine, pas)
+Une fonction qui est utilisée pour vérifier que l'on ne dépasse pas
+la taille de la séquence avec les calculs du 03 février.
+Elle renvoie position + pas si l'on ne dépasse pas la taille de la 
+séquence.
+Sinon, elle renvoie position - len(chaine)
+
+inputfp()
+Une fonction qui demande la taille de la fenêtre et le pas à l'utilisateur.
+Elle renvoie la taille de la fenêtre et le pas.
+Elle vérifie que le pas est inférieur à la taille de la fenêtre et que la 
+taille de la fenêtre est supérieure à 0.
+
+Durant ce jour nous avons ainsi définitivement corrigé l'erreur de compréhension 
+de la fenêtre glissante et cette dernière est totalement fonctionnelle.
+
+
+################################
+#------- 10 février 2022 ------# 
+################################
+
+Durant ce jour, nous avons créé une fonction "traitement" et nous 
+avons mis en forme les différents fichiers pour gagner en lisibilité.
+
+traitement (pas, tailleF, file, longueur, chaine)
+Cette fonction est utilisée pour faire le calcul du taux de GC 
+entre 0 et la longueur de la séquence.
+On y trouve une boucle for in range(0, longueur, pas) qui permet
+d'écrire dans le fichier le résultat du calcul du taux de GC que
+l'on fait à chaque passage dans la boucle à l'aide de la fonction
+"tauxgc", on écrit donc à l'aide de la fonction "ecriture" et on
+incrémente la position à l'aide de la fonction "checkposition".
+
+A ce stade notre programme en python est entièrement fonctionnel
+et nous attendons les cours sur R pour avancer.
+
+
+################################
+#-------- 07 mars 2022 --------# 
+################################
+
+Durant cette séance nous avons commencé à utiliser le langage R.
+Nous avons globalement réutilisé les différentes fonctions vues en cours
+pour obtenir un histogramme et un graphique par rapport à notre fichier de sortie
+"tauxgc.txt".
+
+Nous avons également fait des calculs statistiques sur notre dataframe
+que nous avons enregistrés dans un fichier "resultats.txt" dans le dossier sortie.
+
+################################
+#-------- 08 mars 2022 --------# 
+################################
+
+Durant ce jour nous avons fait un fichier "test.R" dans lequel nous
+avons essayé des méthodes pour obtenir un graphique analysable sans 
+obtenir grand chose de concluant.
+
+Nous avons créé deux dataframes correspondants aux deux colonnes de 
+notre fichier "tauxgc.txt".
+
+Nous faisons ensuite un graphique avec la fonction "plot" 
+en utilisant les deux dataframes.
+
+Nous avons abandonné notre fichier "resultats.txt" car il n'est pas
+utile pour le graphique et l'identification de l'ori.
+
+
+################################
+#-------- 27 mars 2022 --------# 
+################################
+
+Aujourd'hui j'ai remarqué qu'on ne vérifiait pas que le pas 
+était bien supérieur à 0 alors je l'ai corrigé.
+
+
+################################
+#-------- 28 mars 2022 --------# 
+################################
+
+Aujourd'hui nous avons commencé à tester notre programme avec la séquence
+"Borrelia_burgdorferi_B31_complete_genome.txt".
+
+Nous avons modifié la fonction "tauxgc" pour qu'elle arrondisse 
+le résultat à 2 chiffres après la virgule, et nous avons utilisé une
+méthode de calcul plus concise.
+
+Nous avons créé le fichier "graph_plot.R" qui permet de faire un graphique
+avec la fonction "plot" à partir des données du fichier "tauxgc.txt".
+Ce fichier est beaucoup plus efficace que nos précédents essais en R,
+en effet on n'utilise qu'un seul dataframe avec 2 colonnes.
+On change ensuite le directory dans lequel on travaille pour que le 
+graphique soit dans le dossier "sortie".
+On utilise pour ça la fonction "setwd" qui permet de changer le directory.
+Cependant ce n'est pas optimal car cela ne fonctionne pour le moment
+qu'avec nos noms de fichiers personnels, il faudrait implémenter une façon
+universelle de naviguer dans les fichiers.
+
+Nous avons ensuite réorganisé tous nos fichiers en rangeant tout dans 
+des dossiers adaptés.
+On compte donc un dossier python avec les programmes en python,
+un dossier R avec les programmes en R, un dossier sortie avec les
+fichiers de sortie des différents programmes et un dossier 
+sequence avec les fichiers que l'on utilise pour les séquences.
+
+Enfin, nous avons utilisé la librairie python "subprocess" pour 
+lancer nos programmes en R à la fin de l'exécution du programme en python.
+
+Nous avons également commencé à essayer d'écrire notre programme 
+en C pour tester nos compétences en C.
+
+
+################################
+#-------- 08 avril 2022 -------# 
+################################
+
+Durant cette journée nous avons repéré un bug dans nos calculs en python
+qui faisait que l'on avait des taux de gc très faibles en approchant de 
+la fin de la séquence car on faisait les calculs sans compter les 
+nucléotides manquants et en divisant par la taille de la fenêtre. 
+
+Ainsi nous faisons dorénavant nos calculs de taux de gc avec une variable
+tailleM (taille modifiée) qui vaut longueur - position si la variable
+position est supérieure à longueur - taille.
+Sinon, tailleM est égale à taille.
+
+Nous avons également implémenté la détection de l'os en R pour utiliser les 
+fichiers d'Erwann si l'os est windows et mes fichiers si l'os est linux.
+C'est une solution pour que nous puissions tous les deux utiliser le programme,
+cependant ce n'est pas la solution universelle que l'on recherche et on essaiera
+de l'améliorer. 
+
+
+################################
+#-------- 11 avril 2022 -------# 
+################################
+
+Aujourd'hui nous avons avancé dans la programmation de notre programme
+en C.
+
+Nous avons également remarqué que notre modification du calcul du taux de gc
+ne fonctionnait toujours pas, et l'avons corrigé après avoir cherché la source du problème
+trop longtemps. Nous n'avions pas remplacé la variable taille par tailleM dans le calcul
+final.
+
+
+################################
+#-------- 18 avril 2022 -------# 
+################################
+
+Aujourd'hui nous avons implémenté le calcul G-C/G+C en réutilisant la fonction
+traitement et en adaptant le calcul, en appelant la fonction calcGC, que l'on
+a créée pour l'occasion. Cette fonction traitement2 écrit le fichier de sortie
+"calcgc.txt" de la même façon que "tauxgc.txt".
+
+calcgc(i, chaine, taille, position, longueur)
+Fonction fonctionnant comme "tauxgc" mais en faisant le calcul
+G-C/G+C au lieu de G+C/total.
+
+Ainsi nous avons adapté le programme en R en faisant un deuxième plot mais avec
+le fichier "calcgc.txt" qui contient les données de notre deuxième calcul.
+
+J'ai ensuite converti les positions en kilobases pour plus de lisibilité.
+Enfin, j'ai rajouté une ligne d'abscisse 0 au deuxième graphique pour bien
+voir le changement de signe du résultat.
+
+
+################################
+#-------- 19 avril 2022 -------# 
+################################
+
+Aujourd'hui nous avons réorganisé les dossiers et supprimé tous les fichiers
+inutiles.
+
+Nous avons supprimé les fichiers relatif au C par exemple, qui n'ont pas été
+utilisés et qui rendent le GitHub plus lourd pour rien.
+
+Nous avons du changer les chemins d'accès de certains fichiers à cause de la 
+réorganisation des dossiers.
+
+Nous avons actualisé le GitHub avec un readme.md dans lequel on a mis l'introduction
+de notre rapport final, qui décrit bien les enjeux du projet.
+
+
+################################
+#-------- 21 avril 2022 -------# 
+################################
+
+Aujourd'hui nous avons ajouté un "menu de sélection" pour que l'utilisateur
+puisse choisir quel calcul il souhaite utiliser pour analyser sa séquence.
+
+Pour cela nous avons donc créé une fonction menu qui demande à l'utilisateur
+une réponse comprise entre 1 et 3 et qui nous permet de lancer des programmes
+en fonction de la réponse.
+
+Nous avons ainsi créé un fichier "graph_plot_tauxgc.R" qui permet de faire un
+graphique avec la fonction "plot" à partir des données du fichier "tauxgc.txt".
+Et un fichier "graph_plot_calcgc.R" qui permet de faire un graphique avec la
+fonction "plot" à partir des données du fichier "calcgc.txt".
+
+Cependant nous avons implémenté cela en réutilisant la première méthode 
+d'écriture des fichiers de sortie qui rend quelque chose de très peu lisible.
+
+
+################################
+#-------- 22 avril 2022 -------# 
+################################
+
+Aujourd'hui j'ai résolu les problèmes de chemin d'accès des fichiers en R.
+Il suffisait de spécifier le nom du dossier dans lequel aller entre guillemets.
+Et c'est tout. Du moins pour les fichiers ne faisant qu'un seul graphique.
+
+Pour "graph_plot.R" j'ai ajouté une variable directory qui contient le résultat
+de la fonction "getwd" qui permet de récupérer le chemin d'accès du dossier.
+Ainsi je peux revenir au dossier d'origine de l'exécution du programme après le
+premier graphique automatiquement. Cela me permet d'attribuer à notre dataframe
+les valeurs du second fichier de sortie "calcgc.txt" et de faire un graphique
+avec les données de ce fichier.
+Notons que le plus optimal serait de faire un dataframe différent et d'attribuer
+les fichiers aux dataframes au début du programme pour ne pas avoir à changer le
+chemin d'accès à chaque fois.
+
+De plus, nous avons fait la synthèse de la création de nos fichiers de sortie
+dans une fonction "createFile" qui permet de créer les fichiers de sortie en
+fonction de la réponse de l'utilisateur dans le menu.
+
+createFile(reponse,pas,tailleF,longueur,chaine)
+Fonction qui permet de créer les fichiers de sortie en fonction de la réponse 
+et en utilisant les fonctions traitement et traitement2.
+On utilise de la récursivité pour le cas où la réponse est 3, c'est à dire 
+pour le cas où l'on doit faire les 2 fichiers. Dans ce cas on rappelle la fonction
+une fois avec la réponse = 2 et une fois avec la réponse = 1.
+
+Pour finir, nous avons corrigé un bug concernant le menu.
+En effet ce dernier ne prenait pas réellement en compte les cas où l'utilisateur
+rentrait une valeur incorrecte.
+Le programme ne fonctionnait pas avec la vérification suivante : 
+while reponse > 3 | reponse < 1:
+Cependant il fonctionne avec la vérification suivante :
+while reponse < 1 or reponse > 3:
+Nous ne comprenons pas vraiment la logique étant donné que ces deux lignes 
+semblent être identiques, cependant la deuxième fonctionne et pas la première.
