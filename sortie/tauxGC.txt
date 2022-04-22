@@ -1,4 +1,4 @@
-Position	TauxGC
+Position	Taux de GC
 0.0	26.26
 2.5	28.1
 5.0	28.18

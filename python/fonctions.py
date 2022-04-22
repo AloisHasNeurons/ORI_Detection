@@ -85,22 +85,17 @@ def inputfp():
             "Entrez un pas inférieur à la taille de la fenêtre et supérieur à 0 svp : "))
     return tailleF, pas
 
-#################################################
-#-----Demande des valeurs des variables---------#
-#################################################
 
 def menu ():
     reponse = int(input("Choisissez une option : \n 1 - Taux de GC \n 2 - G-C/G+C \n 3 - Les deux calculs \n"))
-    while reponse > 3 | reponse < 1:
+    # Check that reponse is between 1 and 3
+    while reponse < 1 or reponse > 3:
         reponse = int(input("Choisissez une option : \n 1 - Taux de GC \n 2 - G-C/G+C \n 3 - Les deux calculs \n"))
-    if (reponse == 1):
-        return 1
-    elif (reponse == 2):
-        return 2
-    elif (reponse == 3):
-        return 3
+    return reponse
+
+
 #################################################
-#--------Création du fichier de sortie----------#
+#--------Ecriture du fichier de sortie----------#
 #################################################
 
 
@@ -128,3 +123,25 @@ def traitement2(pas, tailleF, file, longueur, chaine):
         tauxgcV = calcgc(i, chaine, tailleF, position, longueur)
         ecriture(position/1000, tauxgcV, file)
         position = checkposition(position, chaine, pas)
+
+
+#################################################
+#--------Création du fichier de sortie----------#
+#################################################
+
+def createFile(reponse,pas,tailleF,longueur,chaine):
+    if (reponse == 3):
+        createFile(1, pas, tailleF, longueur, chaine)
+        createFile(2, pas, tailleF, longueur, chaine)
+    elif (reponse == 1):
+        file = open("sortie/tauxgc.txt", "w")
+        file.write("Position\tTaux de GC\n")
+        traitement(pas, tailleF, file, longueur, chaine)
+        file.close()
+        print("Le fichier tauxgc.txt a été créé")
+    elif (reponse == 2):
+        file = open("sortie/calcGC.txt", "w")
+        file.write("Position\tG-C/G+C\n")
+        traitement2(pas, tailleF, file, longueur, chaine)
+        file.close()
+        print("Le fichier calcGC.txt a été créé")

@@ -28,48 +28,23 @@ file.close()
 # Vérification de la séquence
 adn = validation(chaine)
 
-#######################################################
-#-------------Ecriture du fichier de sortie-----------#
-#######################################################
+######################################################################
+#-------------Ecriture du fichier de sortie et appel du R -----------#
+######################################################################
 
 # On peut calculer le taux de GC uniquement si la séquence est valide
 if (adn == True):
     print("Séquence valide")
     tailleF, pas = inputfp()
     reponse = menu()
-    if (reponse == 1):
-        ########- Ecriture du fichier de taux de GC -########
-        file_write = open("sortie/tauxGC.txt", "w")
-        file_write.write("Position"+"\t"+"TauxGC"+"\n")
-        traitement(pas, tailleF, file_write, longueur, chaine)
-        print("Fichier de taux de GC créé")
-        file_write.close()
-        print("Lancement du programme R")
+    createFile(reponse,pas, tailleF, longueur, chaine)
+    # Lancement du programme R en fonction de l'option choisie
+    print("Lancement du programme R")
+    if (reponse == 3):
+        subprocess.call(["Rscript", "R/graph_plot.r"])
+    elif (reponse == 1):
         subprocess.call(["Rscript", "R/graph_plot_tauxGC.r"])
     elif (reponse == 2):
-        ########- Ecriture du fichier de G-C/G+C -########
-        file_write = open("sortie/GC.txt", "w")
-        file_write.write("Position"+"\t"+"G-C/G+C"+"\n")
-        traitement2(pas, tailleF, file_write, longueur, chaine)
-        print("Fichier de G-C/G+C créé")
-        file_write.close()
-        print("Lancement du programme R")
         subprocess.call(["Rscript", "R/graph_plot_calcGC.r"])
-    elif (reponse == 3):
-        ########- Ecriture du fichier de taux de GC -########        
-        file_write = open("sortie/tauxGC.txt", "w")
-        file_write.write("Position"+"\t"+"TauxGC"+"\n")
-        traitement(pas, tailleF, file_write, longueur, chaine)
-        print("Fichier de taux de GC créé")
-        file_write.close()
-        ########- Ecriture du fichier de G-C/G+C -########
-        file_write = open("sortie/GC.txt", "w")
-        file_write.write("Position"+"\t"+"G-C/G+C"+"\n")
-        traitement2(pas, tailleF, file_write, longueur, chaine)
-        print("Fichier de G-C/G+C créé")
-        file_write.close()
-        print("Lancement du programme R")
-        subprocess.call(["Rscript", "R/graph_plot.r"])
-
 else:
     print("Séquence invalide")
