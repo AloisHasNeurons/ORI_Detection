@@ -49,7 +49,7 @@ if (adn == True):
     elif (reponse == 1):
         subprocess.call(["Rscript", "R/graph_plot_tauxGC.r"])
     elif (reponse == 2):
-        subprocess.call(["Rscript", "R/graph_plot_calcGC.r"])
+        subprocess.call(["Rscript", "R/graph_plot_gcSkew.r"])
 else:
     print("Séquence invalide")
 

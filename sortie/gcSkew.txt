@@ -1,4 +1,4 @@
-Position(Kb)	G-C/G+C
+Position(Kb)	GC Skew
 0.0	-15.31
 2.5	-11.03
 5.0	-18.81

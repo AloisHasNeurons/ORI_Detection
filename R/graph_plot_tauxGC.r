@@ -1,12 +1,12 @@
 ###########################################
-#-------------Premier graphique-----------#
+#---------------Taux de GC ---------------#
 ###########################################
 
-# Load data
-data <- read.table("sortie/tauxGC.txt", sep = "\t", header = TRUE) # nolint
 
-# Set up the plot
 setwd("sortie")
+# Load data
+data <- read.table("tauxGC.txt", sep = "\t", header = TRUE) # nolint
+
 
 # Plot
 plot(data[, 1], data[, 2], type = "l", xlab = "Position en kilobases", ylab = "Taux GC", main = "ORI", ylim = c(20, 50)) # nolint

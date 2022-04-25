@@ -15,16 +15,16 @@ def tauxgc(i, chaine, taille, position, longueur):
     return str(tgc)
 
 
-def calcgc(i, chaine, taille, position, longueur):
+def gcskew(i, chaine, taille, position, longueur):
     if (position >= longueur - taille):
         tailleM = longueur - position
     else:
         tailleM = taille
     tg = chaine[i:i+tailleM].count("G")
     tc = chaine[i:i+tailleM].count("C")
-    tgc = ((tg - tc)/(tg + tc)) * 100
-    tgc = round(tgc, 2)
-    return str(tgc)
+    gcs = ((tg - tc)/(tg + tc)) * 100
+    gcs = round(gcs, 2)
+    return str(gcs)
 
 
 #################################################
@@ -87,10 +87,10 @@ def inputfp():
 
 
 def menu():
-    reponse = int(input("Choisissez une option : \n 1 - Taux de GC \n 2 - G-C/G+C \n 3 - Les deux calculs \n"))
+    reponse = int(input("Choisissez une option : \n 1 - Taux de GC \n 2 - GC Skew \n 3 - Les deux calculs \n"))
     # Check that reponse is between 1 and 3
     while reponse < 1 or reponse > 3:
-        reponse = int(input("Choisissez une option : \n 1 - Taux de GC \n 2 - G-C/G+C \n 3 - Les deux calculs \n"))
+        reponse = int(input("Choisissez une option : \n 1 - Taux de GC \n 2 - GC Skew \n 3 - Les deux calculs \n"))
     return reponse
 
 
@@ -116,12 +116,12 @@ def traitement2(pas, tailleF, file, longueur, chaine):
     position = 0
     for i in (range(0, longueur, pas)):
         if (position >= longueur - tailleF):
-            tauxgcV = calcgc(i, chaine, tailleF, position, longueur)
-            ecriture(position/1000, tauxgcV, file)
+            gcSkewV = gcskew(i, chaine, tailleF, position, longueur)
+            ecriture(position/1000, gcSkewV, file)
             position = checkposition(position, chaine, pas)
             break
-        tauxgcV = calcgc(i, chaine, tailleF, position, longueur)
-        ecriture(position/1000, tauxgcV, file)
+        gcSkewV = gcskew(i, chaine, tailleF, position, longueur)
+        ecriture(position/1000, gcSkewV, file)
         position = checkposition(position, chaine, pas)
 
 
@@ -141,8 +141,8 @@ def createFile(reponse, pas, tailleF, longueur, chaine):
         file.close()
         print("Le fichier tauxgc.txt a été créé")
     elif (reponse == 2):
-        file = open("sortie/calcGC.txt", "w")
-        file.write("Position(Kb)\tG-C/G+C\n")
+        file = open("sortie/gcSkew.txt", "w")
+        file.write("Position(Kb)\tGC Skew\n")
         traitement2(pas, tailleF, file, longueur, chaine)
         file.close()
-        print("Le fichier calcGC.txt a été créé")
+        print("Le fichier gcSkew.txt a été créé")
