@@ -1,5 +1,6 @@
 from fonctions import *
 import subprocess
+import time 
 
 #######################################################
 #-------------Déclaration des variables---------------#
@@ -7,6 +8,7 @@ import subprocess
 
 adn = True
 ligne = 0
+start_time = time.time()
 
 #######################################################
 #-------------Traitement des fichiers-----------------#
@@ -35,8 +37,10 @@ adn = validation(chaine)
 # On peut calculer le taux de GC uniquement si la séquence est valide
 if (adn == True):
     print("Séquence valide")
+    pause1 = time.time()
     tailleF, pas = inputfp()
     reponse = menu()
+    pause2 = time.time()
     createFile(reponse, pas, tailleF, longueur, chaine)
     # Lancement du programme R en fonction de l'option choisie
     print("Lancement du programme R")
@@ -48,3 +52,7 @@ if (adn == True):
         subprocess.call(["Rscript", "R/graph_plot_calcGC.r"])
 else:
     print("Séquence invalide")
+
+#On supprime le temps durant lequel l'utilisateur rentre les valeurs du calcul du temps d'éxecution
+pause = pause2 - pause1
+print("Temps d'exécution :", round((time.time() - start_time - pause), 4), "secondes")
