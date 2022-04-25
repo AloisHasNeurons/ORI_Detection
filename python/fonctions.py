@@ -136,13 +136,13 @@ def createFile(reponse, pas, tailleF, longueur, chaine):
         createFile(2, pas, tailleF, longueur, chaine)
     elif (reponse == 1):
         file = open("sortie/tauxgc.txt", "w")
-        file.write("Position\tTaux de GC\n")
+        file.write("Position(Kb)\tTaux de GC\n")
         traitement(pas, tailleF, file, longueur, chaine)
         file.close()
         print("Le fichier tauxgc.txt a été créé")
     elif (reponse == 2):
         file = open("sortie/calcGC.txt", "w")
-        file.write("Position\tG-C/G+C\n")
+        file.write("Position(Kb)\tG-C/G+C\n")
         traitement2(pas, tailleF, file, longueur, chaine)
         file.close()
         print("Le fichier calcGC.txt a été créé")
