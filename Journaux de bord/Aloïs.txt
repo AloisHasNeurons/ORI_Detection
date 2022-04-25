@@ -348,3 +348,20 @@ Cependant il fonctionne avec la vérification suivante :
 while reponse < 1 or reponse > 3:
 Nous ne comprenons pas vraiment la logique étant donné que ces deux lignes 
 semblent être identiques, cependant la deuxième fonctionne et pas la première.
+
+
+################################
+#-------- 25 avril 2022 -------# 
+################################
+
+Ajourd'hui nous avons ajouté le calcul du temps d'exécution du programme.
+Nous avons utilisé une variable "pause" qui calcule le temps que 
+l'utilisateur a mis à saisir les valeurs pour le soustraire au temps
+d'exécution.
+
+Nous avons également précisé dans le header de notre fichier que les
+positions sont en kilobases.
+
+Enfin, j'ai optimisé le fichier "graph_plot.R" en chargeant les données
+dans 2 dataframes au début du programme pour éviter de changer plusieurs fois
+de chemin d'accès.
