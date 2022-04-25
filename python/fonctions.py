@@ -34,7 +34,7 @@ def calcgc(i, chaine, taille, position, longueur):
 
 def validation(chaine):
     for i in chaine:
-        if i not in "atgcATGCKMNRSWY":
+        if i not in "ATGCKMNRSWY":
             return False
     return True
 
